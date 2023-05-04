@@ -21,10 +21,18 @@ export default function (props: { prompts: PromptItem[] }) {
   let inputRef: HTMLTextAreaElement
   let containerRef: HTMLDivElement
   const [messageList, setMessageList] = createSignal<ChatMessage[]>([
-    // {
-    //   role: "assistant",
-    //   content: mdMessage
-    // }
+    {
+      role: "system",
+      content: "你好，我是谁"
+    },
+    {
+      role: "user",
+      content: "你好，我是谁"
+    },
+    {
+      role: "assistant",
+      content: "你好，我是谁"
+    }
   ])
   const [inputContent, setInputContent] = createSignal("")
   const [currentAssistantMessage, setCurrentAssistantMessage] = createSignal("")
