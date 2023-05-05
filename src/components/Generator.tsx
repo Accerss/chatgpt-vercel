@@ -256,7 +256,7 @@ export default function (props: { prompts: PromptItem[] }) {
           "background-color": "var(--c-bg)"
         }}
       >
-        <For each={messageList().slice(3)}>
+        <For each={messageList()}>
           {message => (
             <MessageItem role={message.role} message={message.content} />
           )}
