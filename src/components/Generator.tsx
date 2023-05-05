@@ -65,9 +65,13 @@ export default function (props: { prompts: PromptItem[] }) {
     if (messageList().length === 0) {
       setMessageList([
         {
-          role: "assistant",
-          content: defaultMessage
-        }
+          role: "user",
+          content: "你是我的助手，我想用flowable业务流程控制我的机器人，接下来我会教你如何实现控制机器人，我需要你的回答是bpmn20.xml文件。"
+        },
+        {
+          role: "user",
+          content: "以下是我定义好的服务任务和类的实现，使用这些服务一定要与对应的类绑定。\n\n| 服务任务名称 | 类的实现                                                |\n| ------------ | ------------------------------------------------------- |\n| 欢迎学生     | org.flowable.ui.task.application.Servicetask.WelStudent |\n| 欢迎老师     | org.flowable.ui.task.application.Servicetask.WelTeacher |\n| 打开电灯     | org.flowable.ui.task.application.Servicetask.WelTeacher |\n| 打开风扇     | org.flowable.ui.task.application.Servicetask.WelTeacher |\n| 关闭风扇     | org.flowable.ui.task.application.Servicetask.WelTeacher |\n\n你必须根据待会儿我告诉你的场景，用我提供的服务任务构造业务流程，听明白了吗。"},{"role":"assistant","content":"明白了，您希望使用上述服务任务来控制机器人的欢迎、开关电灯和风扇等功能。以下是根据您提供的需求和步骤构造的bpmn20.xml文件：\n\n```xml\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<definitions xmlns=\"http://www.omg.org/spec/BPMN/20100524/MODEL\"\n             xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n             xmlns:flowable=\"http://flowable.org/bpmn\"\n             targetNamespace=\"Examples\">\n\n  <process id=\"robot-control\" name=\"Robot Control\">\n  \n    <startEvent id=\"start\" name=\"Start\"></startEvent>\n    \n    <sequenceFlow id=\"flow1\" sourceRef=\"start\" targetRef=\"task1\" />\n    \n    <serviceTask id=\"task1\" name=\"Welcome Message for Student\" flowable:class=\"org.flowable.ui.task.application.Servicetask.WelStudent\">\n      <extensionElements>\n        <flowable:taskListener event=\"complete\" expression=\"${execution.setVariable('message', 'Welcome to the class, student!')}\"></flowable:taskListener>\n      </extensionElements>\n    </serviceTask>\n    \n    <sequenceFlow id=\"flow2\" sourceRef=\"task1\" targetRef=\"task2\" />\n    \n    <serviceTask id=\"task2\" name=\"Welcome Message for Teacher\" flowable:class=\"org.flowable.ui.task.application.Servicetask.WelTeacher\">\n      <extensionElements>\n        <flowable:taskListener event=\"complete\" expression=\"${execution.setVariable('message', 'Welcome to the class, teacher!')}\"></flowable:taskListener>\n      </extensionElements>\n    </serviceTask>\n    \n    <exclusiveGateway"},{"role":"user","content":"以下是我定义好的服务任务和类的实现，使用这些服务任务一定要与对应的类绑定。\n\n| 服务任务名称 | 类的实现                                                |\n| ------------ | ------------------------------------------------------- |\n| 欢迎学生     | org.flowable.ui.task.application.Servicetask.WelStudent |\n| 欢迎老师     | org.flowable.ui.task.application.Servicetask.WelTeacher |\n| 打开电灯     | org.flowable.ui.task.application.Servicetask.WelTeacher |\n| 打开风扇     | org.flowable.ui.task.application.Servicetask.WelTeacher |\n| 关闭风扇     | org.flowable.ui.task.application.Servicetask.WelTeacher |\n\n接下来我会告诉你我的具体需求，用我提供的服务任务构造业务流程，你可以做到吗。"
+        } 
       ])
     } else if (
       messageList().length > 1 &&
@@ -207,14 +211,6 @@ export default function (props: { prompts: PromptItem[] }) {
   function clearSession() {
     // setInputContent("")
     setMessageList([
-      {
-        role: "user",
-        content: "你是我的助手，我想用flowable业务流程控制我的机器人，接下来我会教你如何实现控制机器人，我需要你的回答是bpmn20.xml文件。"
-      },
-      {
-        role: "user",
-        content: "以下是我定义好的服务任务和类的实现，使用这些服务一定要与对应的类绑定。\n\n| 服务任务名称 | 类的实现                                                |\n| ------------ | ------------------------------------------------------- |\n| 欢迎学生     | org.flowable.ui.task.application.Servicetask.WelStudent |\n| 欢迎老师     | org.flowable.ui.task.application.Servicetask.WelTeacher |\n| 打开电灯     | org.flowable.ui.task.application.Servicetask.WelTeacher |\n| 打开风扇     | org.flowable.ui.task.application.Servicetask.WelTeacher |\n| 关闭风扇     | org.flowable.ui.task.application.Servicetask.WelTeacher |\n\n你必须根据待会儿我告诉你的场景，用我提供的服务任务构造业务流程，听明白了吗。"},{"role":"assistant","content":"明白了，您希望使用上述服务任务来控制机器人的欢迎、开关电灯和风扇等功能。以下是根据您提供的需求和步骤构造的bpmn20.xml文件：\n\n```xml\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<definitions xmlns=\"http://www.omg.org/spec/BPMN/20100524/MODEL\"\n             xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n             xmlns:flowable=\"http://flowable.org/bpmn\"\n             targetNamespace=\"Examples\">\n\n  <process id=\"robot-control\" name=\"Robot Control\">\n  \n    <startEvent id=\"start\" name=\"Start\"></startEvent>\n    \n    <sequenceFlow id=\"flow1\" sourceRef=\"start\" targetRef=\"task1\" />\n    \n    <serviceTask id=\"task1\" name=\"Welcome Message for Student\" flowable:class=\"org.flowable.ui.task.application.Servicetask.WelStudent\">\n      <extensionElements>\n        <flowable:taskListener event=\"complete\" expression=\"${execution.setVariable('message', 'Welcome to the class, student!')}\"></flowable:taskListener>\n      </extensionElements>\n    </serviceTask>\n    \n    <sequenceFlow id=\"flow2\" sourceRef=\"task1\" targetRef=\"task2\" />\n    \n    <serviceTask id=\"task2\" name=\"Welcome Message for Teacher\" flowable:class=\"org.flowable.ui.task.application.Servicetask.WelTeacher\">\n      <extensionElements>\n        <flowable:taskListener event=\"complete\" expression=\"${execution.setVariable('message', 'Welcome to the class, teacher!')}\"></flowable:taskListener>\n      </extensionElements>\n    </serviceTask>\n    \n    <exclusiveGateway"},{"role":"user","content":"以下是我定义好的服务任务和类的实现，使用这些服务任务一定要与对应的类绑定。\n\n| 服务任务名称 | 类的实现                                                |\n| ------------ | ------------------------------------------------------- |\n| 欢迎学生     | org.flowable.ui.task.application.Servicetask.WelStudent |\n| 欢迎老师     | org.flowable.ui.task.application.Servicetask.WelTeacher |\n| 打开电灯     | org.flowable.ui.task.application.Servicetask.WelTeacher |\n| 打开风扇     | org.flowable.ui.task.application.Servicetask.WelTeacher |\n| 关闭风扇     | org.flowable.ui.task.application.Servicetask.WelTeacher |\n\n接下来我会告诉你我的具体需求，用我提供的服务任务构造业务流程，你可以做到吗。"
-      } 
     ])
     setCurrentAssistantMessage("")
   }
