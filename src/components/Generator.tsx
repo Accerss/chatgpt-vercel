@@ -5,7 +5,7 @@ import type { ChatMessage } from "~/types"
 import SettingAction from "./SettingAction"
 import PromptList from "./PromptList"
 import { Fzf } from "fzf"
-import { defaultMessage, defaultSetting } from "~/default"
+import { myMessage, defaultSetting } from "~/default"
 import throttle from "just-throttle"
 import { isMobile } from "~/utils"
 // import { mdMessage } from "~/temp"
@@ -71,7 +71,7 @@ export default function (props: { prompts: PromptItem[] }) {
         },
         {
           role: "user",
-          content: "以下是我定义好的服务任务和类的实现，使用这些服务一定要与对应的类绑定。\n\n| 服务任务名称 | 类的实现                                                |\n| ------------ | ------------------------------------------------------- |\n| 欢迎学生     | org.flowable.ui.task.application.Servicetask.WelStudent |\n| 欢迎老师     | org.flowable.ui.task.application.Servicetask.WelTeacher |\n| 打开电灯     | org.flowable.ui.task.application.Servicetask.WelTeacher |\n| 打开风扇     | org.flowable.ui.task.application.Servicetask.WelTeacher |\n| 关闭风扇     | org.flowable.ui.task.application.Servicetask.WelTeacher |\n\n你必须根据待会儿我告诉你的场景，用我提供的服务任务构造业务流程，听明白了吗。"
+          content: myMessage
         },
         {
           role: "assistant",
