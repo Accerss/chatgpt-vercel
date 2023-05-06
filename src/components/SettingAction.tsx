@@ -189,9 +189,13 @@ async function exportMD(messages: ChatMessage[]) {
   console.log(match)
   if (match) {
     const xmlMarkdown = match[0];
-    const xmlCode = xmlMarkdown.replace(/^```/, '').replace(/```$/, '')
-    const file = new Blob([xmlCode || ""], { type: 'application/xml' });
-    saveAs(file,"myProcess.bpmn20.xml")
+    const xmlCode = xmlMarkdown.replace(/^```/, '').replace(/```$/, '').trim()
+    const file = new Blob([xmlCode || ""], { type: 'application/bpmn20+xml' });
+
+    const fileName = 'myProcess';
+    const timeStamp = new Date().toLocaleString().replace(/\D/g, '');
+    saveAs(file, fileName + '_' + timeStamp + '.bpmn20.xml');
+
     console.log(xmlCode);
   } else {
     alert('No XML code found')
