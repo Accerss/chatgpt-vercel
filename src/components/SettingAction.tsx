@@ -189,6 +189,7 @@ async function exportMD(messages: ChatMessage[]) {
   console.log(match)
   if (match) {
     const xmlCode = match[0];
+    xmlCode.replace(/^```/, '').replace(/```$/, '')
     const file = new Blob([xmlCode || ""], { type: 'application/xml' });
     saveAs(file,"myProcess.bpmn20.xml")
     console.log(xmlCode);
