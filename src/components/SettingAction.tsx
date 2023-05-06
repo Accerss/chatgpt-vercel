@@ -189,7 +189,7 @@ async function exportMD(messages: ChatMessage[]) {
   console.log(match)
   if (match) {
     const xmlMarkdown = match[0];
-    const xmlCode = xmlMarkdown.replace(/^```/, '').replace(/```$/, '').trim()
+    const xmlCode = xmlMarkdown.replace(/^xml/, '').replace(/^```/, '').replace(/```$/, '').trim()
     const file = new Blob([xmlCode || ""], { type: 'application/bpmn20+xml' });
 
     const fileName = 'myProcess';
