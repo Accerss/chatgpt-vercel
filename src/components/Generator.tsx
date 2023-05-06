@@ -75,7 +75,7 @@ export default function (props: { prompts: PromptItem[] }) {
         },
         {
           role: "assistant",
-          content: "请您把业务流程的具体需求告诉我，我会根据您的```aaaaa```需求来设计对应的bpmn20.xml文件。"
+          content: "请您把业务流程的具体需求告诉我，我会根据您的需求来设计对应的bpmn20.xml文件。"
         }
       ])
     } 
@@ -251,7 +251,7 @@ export default function (props: { prompts: PromptItem[] }) {
           "background-color": "var(--c-bg)"
         }}
       >
-        <For each={messageList()}>
+        <For each={messageList().slice(2)}>
           {message => (
             <MessageItem role={message.role} message={message.content} />
           )}
