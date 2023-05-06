@@ -189,7 +189,7 @@ async function exportMD(messages: ChatMessage[]) {
   console.log(match)
   if (match) {
     const xmlCode = match[0];
-    const file = new Blob([xmlCode || ""], { type: 'text/plain;charset=utf-8' });
+    const file = new Blob([xmlCode || ""], { type: 'application/xml' });
     saveAs(file,"myProcess.bpmn20.xml")
     console.log(xmlCode);
   } else {
@@ -197,5 +197,4 @@ async function exportMD(messages: ChatMessage[]) {
     console.log('No XML code found');
   }
   
-  // const file = new Blob([curMessage], { type: 'text/plain;charset=utf-8' });
 }
