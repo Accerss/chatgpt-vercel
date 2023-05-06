@@ -67,7 +67,7 @@ export default function (props: { prompts: PromptItem[] }) {
       setMessageList([
         {
           role: "system",
-          content: "你是我的助手，我想用flowable业务流程控制我的机器人，接下来我会教你如何实现控制机器人，我需要你的回答是bpmn20.xml文件。"
+          content: "你是我的助手，我想用flowable业务流程控制我的机器人，接下来我会教你如何实现控制机器人，我需要你的回答是bpmn20.xml文件,不需要定义bpmndi。"
         },
         {
           role: "user",

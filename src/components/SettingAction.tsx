@@ -183,11 +183,19 @@ async function exportMD(messages: ChatMessage[]) {
   
   const curMessage = messages.filter(k => k.role === "assistant")
         .at(-1)?.content
-
+        
+  const xmlRegex = /```([\s\S]*?)```/;
+  const match = xmlRegex.exec(curMessage || "");
+  console.log(match)
+  if (match) {
+    const xmlCode = match[0];
+    const file = new Blob([xmlCode || ""], { type: 'text/plain;charset=utf-8' });
+    saveAs(file,"myProcess.bpmn20.xml")
+    console.log(xmlCode);
+  } else {
+    alert('No XML code found')
+    console.log('No XML code found');
+  }
   
-    
-  console.log(curMessage)
-  const file = new Blob([curMessage || ""], { type: 'text/plain;charset=utf-8' });
-  saveAs(file,"myFile.txt")
   // const file = new Blob([curMessage], { type: 'text/plain;charset=utf-8' });
 }
