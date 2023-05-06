@@ -75,7 +75,7 @@ export default function (props: { prompts: PromptItem[] }) {
         },
         {
           role: "assistant",
-          content: "请您把业务流程的具体需求告诉我，我会根据您的需求来设计对应的bpmn20.xml文件。"
+          content: "请您把业务流程的具体需求告诉我，我会```xml sdsad```根据您的需求来设计对应的bpmn20.xml文件。"
         }
       ])
     } 
