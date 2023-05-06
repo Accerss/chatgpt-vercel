@@ -3,6 +3,7 @@ import type { Setting } from "./Generator"
 import { toJpeg } from "html-to-image"
 import { copyToClipboard, dateFormat } from "~/utils"
 import type { ChatMessage } from "~/types"
+import { saveAs } from "file-saver"
 
 export default function SettingAction(props: {
   setting: Accessor<Setting>
@@ -179,16 +180,14 @@ function exportJpg() {
 }
 
 async function exportMD(messages: ChatMessage[]) {
-  const role = {
-    system: "系统",
-    user: "我",
-    assistant: "ChatGPT"
-  }
-  await copyToClipboard(
-    messages
-      .map(k => {
-        return `### ${role[k.role]}\n\n${k.content.trim()}`
-      })
-      .join("\n\n\n\n")
-  )
+  
+  const curMessage = messages.filter(k => k.role === "assistant")
+        .at(-1)?.content
+
+  
+    
+  console.log(curMessage)
+  const file = new Blob([curMessage || ""], { type: 'text/plain;charset=utf-8' });
+  saveAs(file,"myFile.txt")
+  // const file = new Blob([curMessage], { type: 'text/plain;charset=utf-8' });
 }
