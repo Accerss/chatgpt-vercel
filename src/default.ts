@@ -13,9 +13,9 @@ export const defaultMessage = `
 - <kbd>Shift</kbd> + <kbd>Enter</kbd> 换行。开头输入 <kbd>/</kbd> 或者 <kbd>空格</kbd> 搜索 Prompt 预设。点击输入框滚动到底部。`
 
 export const myMessage = `
-以下是我定义好的服务任务和类的实现，请记住你只能用我提供的服务任务，并且这些服务任务的设置一定要与对应的类绑定才能使用。
+以下是我定义好的服务任务name和类的实现activiti:class，请记住你只能用我提供的服务任务，特别重要的是这些服务任务与类绑定才能使用。
 
-| 服务任务名称   | 类的实现                                                  |
+| name           | activiti:class                                            |
 | -------------- | --------------------------------------------------------- |
 | 导航去客厅     | org.flowable.ui.task.application.Servicetask.GoLivingRoom |
 | 导航去厨房     |                                                           |
