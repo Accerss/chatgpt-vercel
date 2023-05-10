@@ -20,6 +20,7 @@ export const myMessage = `
 | 导航去客厅     | org.flowable.ui.task.application.Servicetask.GoLivingRoom |
 | 导航去厨房     |                                                           |
 | 导航去卧室     |                                                           |
+| OCR处方识别    | org.flowable.ui.task.application.Servicetask.OpenOCR                                                          |
 | 打开客厅的灯   | org.flowable.ui.task.application.Servicetask.OpenLight    |
 | 关闭客厅的灯   | org.flowable.ui.task.application.Servicetask.CloseLight   |
 | 打开客厅的窗帘 | org.flowable.ui.task.application.Servicetask.OpenCurtain  |
