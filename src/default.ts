@@ -27,5 +27,5 @@ export const myMessage = `
 | 关闭客厅的窗帘 | org.flowable.ui.task.application.Servicetask.CloseLight   |
 | 控制卧室的风扇 | org.flowable.ui.task.application.Servicetask.WelTeacher   |
 
-下面我会告诉你我的具体需求，用我提供的服务任务构造业务流程，你可以做到吗。
+下面我会告诉你我的具体需求，用我提供的用户任务构造业务流程，你可以做到吗。
 `
