@@ -13,7 +13,7 @@ export const defaultMessage = `
 - <kbd>Shift</kbd> + <kbd>Enter</kbd> 换行。开头输入 <kbd>/</kbd> 或者 <kbd>空格</kbd> 搜索 Prompt 预设。点击输入框滚动到底部。`
 
 export const myMessage = `
-以下是我定义好的用户任务name和对应类的实现flowable:class，这些用户任务与flowable:class绑定才能使用，请记住在flowable业务流程你只能用我提供的用户任务，注意机器人要先导航到指定位置才能后续操作。
+以下是我定义好的用户任务name和对应类的实现flowable:class，这些用户任务与flowable:class绑定才能使用，请记住在flowable业务流程你只能用我提供的用户任务，注意机器人要先导航到指定位置才能后续操作，所有活动统一用用户任务。
 
 | name           | flowable:class                                            |
 | -------------- | --------------------------------------------------------- |
